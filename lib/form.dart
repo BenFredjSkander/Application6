@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:Application6/constants.dart';
+import 'package:Application6/form2.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -235,8 +236,16 @@ class MyCustomFormState extends State<MyCustomForm> {
                             email: emailController.text,
                             password: passwordController.text,
                             gov: govController.text);
-                        Navigator.pushNamed(context, '/second',
-                            arguments: loginData);
+                        if (_imageFile != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Page2(
+                                  loginData: loginData,
+                                  pic: _imageFile,
+                                ),
+                              ));
+                        }
                       }
                     },
                     child:
